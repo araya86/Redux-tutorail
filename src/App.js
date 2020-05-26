@@ -12,12 +12,12 @@ function App() {
   console.log("counter", counter)
 
   function _handleIncrement() {
-    dispatch(CounterActions.increment())
+    dispatch(CounterActions.increment("Click A"))
   }
 
   function _handleDecrement() {
     console.log(" in here ")
-    dispatch(CounterActions.decrement())
+    dispatch(CounterActions.decrement("Click B"))
   }
 
   return (
@@ -35,7 +35,9 @@ function App() {
         >
           Learn React
         </a>
+        
         <p>ตัวเลขปัจจุบันคือ {counter.number}</p>
+        <p>ปุ่มที่กดล่าสุด {counter.clickOn}</p>
         <div>
           <button onClick={() => _handleIncrement()}>เพิ่ม</button>
           <button onClick={() => _handleDecrement()}>ลบ</button>

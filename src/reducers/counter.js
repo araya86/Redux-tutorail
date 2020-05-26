@@ -3,32 +3,37 @@ const INCREMENT = "project/counter/INCREMENT"
 const DECREMENT = "project/counter/DECREMENT"
 
 const initialState = {
-    number: 0
+    number: 0,
+    clickOn: null
 }
 
 export default function (state = initialState, action = {}) {
     switch (action.type) {
         case INCREMENT:
             return {
-                number: state.number + 1
+                number: state.number + 1,
+                clickOn: action.clickOn
             }
         case DECREMENT:
             return {
-                number: state.number - 1
+                number: state.number - 1,
+                clickOn: action.clickOn
             }
         default:
             return state
     }
 }
 
-export function increment() {
+export function increment(clickOn) {
     return {
-        type: INCREMENT
+        type: INCREMENT,
+        clickOn: clickOn
     }
 }
 
-export function decrement() {
+export function decrement(clickOn) {
     return {
-        type: DECREMENT
+        type: DECREMENT,
+        clickOn: clickOn
     }
 }
