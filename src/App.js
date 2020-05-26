@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useSelector, useDispatch } from 'react-redux';
+import * as CounterActions from "./reducers/counter"
 
 function App() {
+
+  const counter = useSelector(state => state.counter)
+  const dispatch = useDispatch()
+
+  console.log("counter", counter)
+
+  function _handleIncrement() {
+    dispatch(CounterActions.increment())
+  }
+
+  function _handleDecrement() {
+    console.log(" in here ")
+    dispatch(CounterActions.decrement())
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +35,11 @@ function App() {
         >
           Learn React
         </a>
+        <p>ตัวเลขปัจจุบันคือ {counter.number}</p>
+        <div>
+          <button onClick={() => _handleIncrement()}>เพิ่ม</button>
+          <button onClick={() => _handleDecrement()}>ลบ</button>
+        </div>
       </header>
     </div>
   );
